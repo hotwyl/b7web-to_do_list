@@ -1,16 +1,16 @@
 # vue_to_do_list
 
-Projeto lista de tarefa em vue + nuxt
+Projeto lista de tarefa em vue + nuxt => <a href='https://hotwyl.github.io/vue_to_do_list/app' target='_Blank'>Clike Aqui para Acessar</a>
 
-[x] cadastrar tarefa
-[x] marcar concluir tarefa
-[x] validar input
-[] estilizar com bootstrap
-[] inserir swit alerts
-[] inserir icons
-[] excluir tarefa
-[] salvar localstorage
-[] gerar seo da pagina
+- [x] cadastrar tarefa
+- [x] validar input
+- [x] marcar concluir tarefa
+- [ ] estilizar com bootstrap
+- [ ] inserir swit alerts
+- [ ] inserir icons
+- [ ] excluir tarefa
+- [ ] salvar localstorage
+- [ ] gerar seo da pagina
 
 ## Build Setup
 
