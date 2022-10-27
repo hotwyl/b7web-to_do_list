@@ -1,0 +1,36 @@
+body{
+  padding: 15px;
+  font-family: Arial;
+}
+
+h2{
+  margin-bottom: 10px;
+}
+
+ul{
+  list-style: none;
+  padding-left: 0;
+}
+
+li{
+  margin: 8px 0;
+}
+
+input{
+  font-size: 15px;
+}
+
+hr{
+  border-top: 1px solid #efefef;
+}
+
+del{
+  color: #999;
+}
+
+.error{
+  margin: 0 0 10px 0;
+  padding: 15px;
+  color: #a94442;
+  background-color: #f2dede;
+}
