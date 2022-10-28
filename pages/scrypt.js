@@ -25,16 +25,37 @@ export default {
   },
   methods: {
     toggle(todo){
+      if(todo.done == false){
+        alert('Deseja atualizar para concluida a tarefa ' + todo.text + ' ?');
+      }else{
+        alert('Deseja atualizar para pendente a tarefa ' + todo.text + ' ?');
+      }
       todo.done = !todo.done;
+      if(todo.done == true){
+        alert('tarefa concluida com sucesso.');
+      }else{
+        alert('tarefa pendente.');
+      }
     },
     add(todo){
       if(todo){
+        alert('deseja adicionar a tarefa : '+ todo)
         this.error = false;
         this.todos.push({text: todo, done: false})
         this.todo = "";
+        alert('tarefa adicionada com sucesso.');
       } else {
         this.error = true;
+        alert('Não identificado informação válida para adicionar a lista.');
       }
+    },
+    del(index){
+      var lista = this.todos;
+      let item = lista[index].text;
+      alert("deseja remover a tarefa "+ item + " ?");
+      lista.splice(index, 1);
+      this.todos = lista
+      alert('removido a tarefa ' + item);
     }
   },
 }

@@ -1,16 +1,19 @@
 # vue_to_do_list
+<a href="https://vue-to-do-list-two.vercel.app/" target="_blank">Clike Aqui para Acessar</a>
 
-Projeto lista de tarefa em vue + nuxt => <a href='https://hotwyl.github.io/vue_to_do_list/app' target='_Blank'>Clike Aqui para Acessar</a>
+Projeto lista de tarefa em vue + nuxt 
 
 - [x] cadastrar tarefa
 - [x] validar input
 - [x] marcar concluir tarefa
+- [X] excluir tarefa
 - [ ] estilizar com bootstrap
 - [ ] inserir swit alerts
 - [ ] inserir icons
-- [ ] excluir tarefa
 - [ ] salvar localstorage
 - [ ] gerar seo da pagina
+- [ ] dividir em duas colunas (tarefas pendentes e tarefas concluidas)
+- [ ] adicionar função arasta e solta entre os quadros
 
 ## Build Setup
 
