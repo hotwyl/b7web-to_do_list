@@ -1,5 +1,5 @@
 export default {
-  name: 'IndexPage',
+  name: 'IndexV1',
   data() {
     return {
       error: false,
