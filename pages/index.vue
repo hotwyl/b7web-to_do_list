@@ -3,7 +3,9 @@
 
     <div class="container py-3">
 
-      <div variant="muted"><h2 variant="secondary">Lista de Tarefa</h2></div>
+      <div>
+        <h2><b-icon icon="list-task"></b-icon> Lista de Tarefa</h2>
+      </div>
 
       <b-alert variant="danger" show dismissible fade v-if="error">
         Informe uma descrição.
@@ -18,7 +20,8 @@
       >
         <b-form-input v-model="todo"></b-form-input>
         <b-input-group-append>
-          <b-button size="sm" text="Adicionar" variant="primary" @click="add(todo)">Adicionar</b-button>
+          <b-button size="sm" text="Adicionar" variant="primary" @click="add(todo)">
+            <b-icon icon="plus-lg"></b-icon> Adicionar</b-button>
         </b-input-group-append>
       </b-input-group>
 
@@ -41,12 +44,14 @@
               >
             </b-input-group-prepend>
 
-            <b-form-input aria-label="Text input with checkbox" v-model="todo.text" style="text-decoration: line-through" disabled v-if="todo.done"></b-form-input>
+            <b-form-input aria-label="Text input with checkbox" class="task_finish" v-model="todo.text" disabled v-if="todo.done"></b-form-input>
 
             <b-form-input aria-label="Text input with checkbox" v-model="todo.text" disabled v-else></b-form-input>
 
             <b-input-group-append>
-              <b-button size="sm" text="Button" variant="outline-danger" v-on:click="del(index)">X</b-button>
+              <b-button size="sm" text="Button" variant="outline-danger" v-on:click="del(index)">
+                <b-icon icon="trash"></b-icon>
+              </b-button>
             </b-input-group-append>
 
           </b-input-group>

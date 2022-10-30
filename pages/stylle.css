@@ -1,0 +1,16 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Verdana, Geneva, Tahoma, Helvetica, sans-serif;
+  height: 100vh;
+}
+
+.task_finish{
+  text-decoration: line-through;
+  color: darkgrey;
+}
