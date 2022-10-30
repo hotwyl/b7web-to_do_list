@@ -1,8 +1,6 @@
 <template>
   <div>
 
-    <Menu />
-
     <div class="container py-3">
 
       <div variant="muted"><h2 variant="secondary">Lista de Tarefa</h2></div>

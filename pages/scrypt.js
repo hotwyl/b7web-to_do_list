@@ -32,7 +32,13 @@ export default {
       }
       todo.done = !todo.done;
       if(todo.done == true){
-        alert('tarefa concluida com sucesso.');
+        this.$swal({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Tarefa concluida com sucesso.',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }else{
         alert('tarefa pendente.');
       }
@@ -52,10 +58,47 @@ export default {
     del(index){
       var lista = this.todos;
       let item = lista[index].text;
-      alert("deseja remover a tarefa "+ item + " ?");
+
+      const swalWithBootstrapButtons = this.$swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "Deseja remover a tarefa " + item + " ?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Deletar Tarefa',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Tarefa <b>' + item + '</b> removida',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Tarefa não deletada! ',
+            'error'
+          )
+        }
+      })
+
+
+      //alert("deseja remover a tarefa "+ item + " ?");
       lista.splice(index, 1);
       this.todos = lista
-      alert('removido a tarefa ' + item);
+        //alert('removido a tarefa ' + item);
     }
   },
 }
