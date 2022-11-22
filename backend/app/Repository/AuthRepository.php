@@ -21,7 +21,7 @@ class AuthRepository
     {
         try {
 
-            return User::where('email', $email)->first();;
+            return User::where('email', $email)->where('status', 1)->first();;
 
         } catch (\Exception $th) {
             throw $th;

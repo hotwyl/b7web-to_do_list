@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Repository\AuthRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class AuthService
@@ -53,8 +54,17 @@ class AuthService
 
     }
 
-    public function login($request){
+    public function login(Request $request){
         try {
+
+            $user = $this->authRepository->buscarUsuario($request['email']);
+
+            if(!in_array($user->cod, [null, false, [], '', ' ']) && empty($user->cod)){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Erro. Usuario inativo ou não cadastrado.',
+                ], 401);
+            }
 
             if(!Auth::attempt(['email' => $request->email, 'password' => $request->password])){
                 return response()->json([
@@ -62,8 +72,6 @@ class AuthService
                     'message' => 'Erro. Email ou Senha inválido.',
                 ], 401);
             }
-
-            $user = $this->authRepository->buscarUsuario($request['email']);
 
             return response()->json([
                 'message' => 'Usuário Logado com Sucesso.',
@@ -80,10 +88,16 @@ class AuthService
     }
 
     public function me(){
-        return response()->json( Auth::user(), 200);
+//        $user['cod'] = Auth::user()->cod;
+        $user['name'] = Auth::user()->name;
+        $user['email'] = Auth::user()->email;
+//        $user['tipo'] = Auth::user()->tipo;
+//        $user['plan'] = Auth::user()->plan;
+        return response()->json( $user, 200);
     }
 
     public function logout(){
+
         Auth::logout();
 
         session()->invalidate();

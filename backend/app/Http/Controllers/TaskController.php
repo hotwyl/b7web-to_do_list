@@ -29,9 +29,9 @@ class TaskController extends Controller
         return $this->service->inative();
     }
 
-    public function show(TaskRequest $request)
+    public function show()
     {
-        return $this->service->show($request->only('cod'));
+        return $this->service->show();
     }
 
     public function create(TaskRequest $request)
@@ -42,6 +42,11 @@ class TaskController extends Controller
     public function store(TaskRequest $request)
     {
         return $this->service->store($request->only('cod', 'task', 'done'));
+    }
+
+    public function editStatus(TaskRequest $request)
+    {
+        return $this->service->editStatus($request->only('cod', 'task', 'done'));
     }
 
     public function destroy(TaskRequest $request)

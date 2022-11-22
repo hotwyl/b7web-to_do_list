@@ -49,10 +49,11 @@ class TaskService
         }
     }
 
-    public function show($response)
+    public function show()
     {
         try {
-            $pesquisa = $this->repository->show($response);
+            $codParam = $this->getCodUrl();
+            $pesquisa = $this->repository->show($codParam);
             return new DataResource($pesquisa);
         } catch (\Exception $ex) {
             return response()->json($ex->getMessage(), 400);
@@ -63,8 +64,8 @@ class TaskService
     {
         try {
             if($response['task']){
-                $dados['cod'] = $this->cod();
-                $dados['user_id'] = $this->user();
+                $dados['cod'] = $this->setCod();
+                $dados['user_id'] = $this->getCodUser();
                 $dados['task'] = $response['task'];
                 $dados['done'] = false;
                 $request = $this->repository->create($dados);
@@ -82,6 +83,16 @@ class TaskService
     {
         try {
             $pesquisa = $this->repository->store($response);
+            return new DataResource($pesquisa);
+        } catch (\Exception $ex) {
+            return response()->json($ex->getMessage(), 400);
+        }
+    }
+
+    public function editStatus($response)
+    {
+        try {
+            $pesquisa = $this->repository->editStatus($response);
             return new DataResource($pesquisa);
         } catch (\Exception $ex) {
             return response()->json($ex->getMessage(), 400);

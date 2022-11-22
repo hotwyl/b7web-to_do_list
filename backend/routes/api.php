@@ -44,8 +44,9 @@ Route::prefix('/')->middleware('auth:sanctum')->group(function () {
         Route::get('/active', [TaskController::class, 'active'])->name('task.active');
         Route::get('/inative', [TaskController::class, 'inative'])->name('task.inative');
         Route::get('/{cod}', [TaskController::class, 'show'])->name('task.show');
-        Route::put('/{cod}', [TaskController::class, 'store'])->name('task.store');
-        Route::delete('/{cod}', [TaskController::class, 'destroy'])->name('task.destroy');
+        Route::put('/{cod}/edit', [TaskController::class, 'store'])->name('task.store');
+        Route::put('/{cod}/altera-status', [TaskController::class, 'editStatus'])->name('task.editStatus');
+        Route::put('/{cod}/destroy', [TaskController::class, 'destroy'])->name('task.destroy');
         Route::post('/search', [TaskController::class, 'search'])->name('task.search');
     });
 

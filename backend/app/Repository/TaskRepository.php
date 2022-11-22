@@ -24,22 +24,22 @@ class TaskRepository
 
     public function all()
     {
-        return Task::where('user_id', $this->user())->where('deleted', 0)->get();
+        return Task::where('user_id', $this->getCodUser())->where('deleted', 0)->get();
     }
 
     public function active()
     {
-        return Task::where('user_id', $this->user())->where('deleted', 0)->where('done', 0)->get();
+        return Task::where('user_id', $this->getCodUser())->where('deleted', 0)->where('done', 0)->get();
     }
 
     public function inative()
     {
-        return Task::where('user_id', $this->user())->where('deleted', 0)->where('done', 1)->get();
+        return Task::where('user_id', $this->getCodUser())->where('deleted', 0)->where('done', 1)->get();
     }
 
     public function show($cod)
     {
-        return Task::where('user_id', $this->user())->where('deleted', 0)->where('cod', $cod)->get();
+        return Task::where('user_id', $this->getCodUser())->where('deleted', 0)->where('cod', $cod)->get();
     }
 
     public function create($task)
@@ -52,9 +52,19 @@ class TaskRepository
         return Task::updated($task);
     }
 
+    public function editStatus($task)
+    {
+        return Task::updated($task);
+    }
+
+    public function destroy($task)
+    {
+        return Task::updated($task);
+    }
+
     public function search($termo)
     {
-        return Task::where('user_id', $this->user())->where('deleted', 0)->where('task', 'like', '%'.$termo.'%')->get();;
+        return Task::where('user_id', $this->getCodUser())->where('deleted', 0)->where('task', 'like', '%'.$termo.'%')->get();;
     }
 
 }
